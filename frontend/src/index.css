@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 200 20% 98%;
+    --foreground: 200 20% 10%;
+    
+    --glass: 210 30% 10% / 20%;
+    --glass-foreground: 0 0% 100%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    
+    --radius: 1rem;
+  }
+  
+  .dark {
+    --background: 200 14% 9%;
+    --foreground: 200 7% 92%;
+    
+    --glass: 210 30% 10% / 35%;
+    --glass-foreground: 0 0% 100%;
+    
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html, body {
+    @apply antialiased w-full h-full;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+  }
+  
+  #root {
+    @apply w-full h-full;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-glass text-glass-foreground backdrop-blur-lg backdrop-filter border border-white/10 shadow-xl;
+  }
+  
+  .backdrop-blur-panel {
+    @apply bg-white/10 backdrop-blur-md backdrop-filter border border-white/20 rounded-3xl shadow-lg;
+  }
+  
+  .weather-icon {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .rain-drops {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  .rain-drop {
+    position: absolute;
+    width: 2px;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: rain 1.5s linear infinite;
+  }
+  
+  .weather-card-transition {
+    @apply transition-all duration-300 transform ease-out;
+  }
+  
+  .weather-card-hover {
+    @apply hover:scale-[1.02] hover:shadow-lg hover:z-10;
+  }
+  
+  .animated-gradient {
+    background: linear-gradient(
+      45deg, 
+      rgba(30, 41, 59, 0.7), 
+      rgba(51, 65, 85, 0.7), 
+      rgba(71, 85, 105, 0.7)
+    );
+    background-size: 200% 200%;
+    animation: gradient 5s ease infinite;
+  }
+  
+  /* Scroll snap container */
+  .snap-container {
+    @apply w-full overflow-y-auto snap-y snap-mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 6rem; /* Thêm padding-bottom để tránh navbar che nội dung */
+  }
+  
+  /* Scroll snap sections */
+  .snap-section {
+    @apply w-full snap-start py-8; /* Padding trên dưới để tách biệt các section */
+  }
+
+  /* Đảm bảo section đầu tiên fit trong màn hình */
+  .snap-section:first-child {
+    @apply min-h-screen flex flex-col justify-between;
+  }
+  
+  .city-weather-card {
+    @apply bg-white/10 backdrop-blur-md rounded-lg p-4 flex flex-col items-center transition-all hover:bg-white/20;
+  }
+  
+  .cities-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto;
+  }
+  
+  .weather-news-card {
+    @apply bg-white/10 backdrop-blur-md rounded-lg overflow-hidden transition-all hover:bg-white/20;
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
+
+@keyframes rain {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  100% {
+    transform: translateY(20px) translateX(5px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
