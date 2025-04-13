@@ -58,7 +58,7 @@
        cd backend
        python -m venv venv
        venv\Scripts\activate
-       pip install django djangorestframework django-cors-headers psycopg2-binary requests
+       pip install django djangorestframework django-cors-headers psycopg2-binary requests Pillow
 
    ****3.2 Vào `weather_api/settings.py`, đổi mật khẩu user PostgreSQL****:
        
