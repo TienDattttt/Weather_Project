@@ -44,7 +44,7 @@
 
    ****2.2 Tạo cơ sở dữ liệu****:
      
-       CREATE DATABASE  weather_db ENCODING 'UTF8'; 
+       CREATE DATABASE weather_db ENCODING 'UTF8'; 
 
    ****2.3 Nhập dữ liệu từ file database.sql****:
        
