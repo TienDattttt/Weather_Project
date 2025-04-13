@@ -57,7 +57,7 @@
 
        cd backend
        python -m venv venv
-       source venv/bin/activate
+       venv\Scripts\activate
        pip install django djangorestframework django-cors-headers psycopg2-binary
 
    ****3.2 Vào `weather_api/settings.py`, đổi mật khẩu user PostgreSQL****:
