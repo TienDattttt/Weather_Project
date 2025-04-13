@@ -76,7 +76,7 @@
 5. **🌐 Thiết lập frontend**:
 
    ```bash
-   cd ../frontend
+   cd frontend
    npm install
 6. **🚀 Chạy dự án**:
    ****Mở terminal trong thư mục backend và chạy****:
